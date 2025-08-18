@@ -1,0 +1,150 @@
+$royal-blue: #0d3b66;
+$light-cream: #faf3dd;
+$gold-accent: #f4d35e;
+
+@use "sass:color";
+
+.home {
+  font-family: 'Poppins', sans-serif;
+  background: $light-cream;
+  color: #222;
+
+  .hero {
+    height: 60vh;
+    background: url('/assets/images/luxury-bg.jpg') center/cover no-repeat;
+    position: relative;
+
+    .overlay {
+      background: rgba(13, 59, 102, 0.6);
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+
+      .content {
+        color: white;
+
+        h1 {
+          font-size: 3rem;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  .filters {
+    background: white;
+    padding: 1.5rem;
+    margin-top: -2rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.8rem;
+
+      select {
+        padding: 0.6rem 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 0.9rem;
+
+        &:focus {
+          border-color: $royal-blue;
+          outline: none;
+        }
+      }
+
+      button {
+        background: $royal-blue;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 0.6rem;
+        cursor: pointer;
+        font-weight: 600;
+
+        &:hover {
+          background: color.adjust($royal-blue, $lightness: 8%);
+        }
+      }
+    }
+  }
+
+  .results {
+    padding: 2rem;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: $royal-blue;
+    }
+
+    .ads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+
+      .ad-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        img {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+        }
+
+        h3 {
+          padding: 0.8rem 1rem 0 1rem;
+          font-size: 1.1rem;
+        }
+
+        .price {
+          color: $gold-accent;
+          font-weight: bold;
+          padding: 0 1rem;
+        }
+
+        .details {
+          font-size: 0.85rem;
+          color: #666;
+          padding: 0 1rem 0.8rem 1rem;
+        }
+
+        a {
+          display: block;
+          background: $royal-blue;
+          color: white;
+          text-align: center;
+          padding: 0.5rem;
+          text-decoration: none;
+          font-weight: 600;
+
+          &:hover {
+            background: color.adjust($royal-blue, $lightness: 8%);
+          }
+        }
+      }
+    }
+  }
+}

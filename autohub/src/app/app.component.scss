@@ -1,0 +1,15 @@
+$royal-blue: #1b3b8b;
+$cream: #f6f3ea;
+$ink: #0f172a;
+
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 20px; background: $royal-blue; color: #fff;
+  .brand { font-weight: 800; cursor: pointer; }
+  nav { display: flex; gap: 14px; align-items: center; }
+  a, .link { color: #fff; text-decoration: none; background: transparent; border: 0; cursor: pointer; }
+  a.active { text-decoration: underline; }
+}
+.container { padding: 24px; background: linear-gradient(180deg, $cream 0%, #fff 100%); min-height: calc(100dvh - 120px); }
+.footer { text-align: center; padding: 20px; color: #666; }
