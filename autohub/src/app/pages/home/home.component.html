@@ -23,9 +23,15 @@
 
       <select [(ngModel)]="filters.body" name="body">
         <option value="">Купе</option>
-        <option>Sedan</option>
-        <option>SUV</option>
-        <option>Coupe</option>
+        <option>Всички</option>
+        <option>Седан</option>
+        <option>Хечбек</option>
+        <option>Комби</option>
+        <option>Купе</option>
+        <option>Кабрио</option>
+        <option>Джип</option>
+        <option>Пикап</option>
+        <option>Ван</option>
       </select>
 
       <select [(ngModel)]="filters.fuel" name="fuel">
@@ -49,21 +55,7 @@
         <option>50 000+ лв.</option>
       </select>
 
-      <select [(ngModel)]="filters.year" name="year">
-        <option value="">Година</option>
-        <option>2025</option>
-        <option>2024</option>
-        <option>2020+</option>
-        <option>2015+</option>
-      </select>
-
-      <select [(ngModel)]="filters.color" name="color">
-        <option value="">Цвят</option>
-        <option>Черен</option>
-        <option>Бял</option>
-        <option>Син</option>
-        <option>Сив</option>
-      </select>
+      
 
       <select [(ngModel)]="filters.doors" name="doors">
         <option value="">Брой врати</option>
@@ -85,6 +77,10 @@
         <option>Навигация</option>
         <option>Кожен салон</option>
         <option>Панорамен покрив</option>
+        <option>Парктроник</option>
+        <option>Камера</option>
+        <option>Адаптивен круиз контрол</option>
+        <option>Безключово палене</option>
       </select>
 
       <select [(ngModel)]="filters.steering" name="steering">
@@ -104,13 +100,17 @@
 
     <div class="ads-grid">
       <div class="ad-card" *ngFor="let ad of ads">
-        <img [src]="ad.image" alt="car">
+        <img [src]="ad.image" alt="Автомобил" />
         <h3>{{ ad.title }}</h3>
-        <p class="price">{{ ad.price }} лв.</p>
-        <p class="details">{{ ad.year }} • {{ ad.mileage }} км • {{ ad.fuel }}</p>
+        <div class="price">{{ ad.price | number }} лв.</div>
+        <div class="details">
+          <span>{{ ad.year }} • </span>
+          <span>{{ ad.brand }} • </span>
+          <span>{{ ad.body }} • </span>
+          <span>{{ ad.fuel }}</span>
+        </div>
         <a [routerLink]="['/details', ad.id]">Виж детайли</a>
       </div>
     </div>
   </section>
-
 </section>

@@ -13,7 +13,7 @@ export interface Car {
   mileage: number; // км
   extras?: string[];
   steering: 'Ляв' | 'Десен';
-  imageUrl: string;
+  imageUrl: string; 
   ownerId: string;
   likes: number;
   createdAt: number;

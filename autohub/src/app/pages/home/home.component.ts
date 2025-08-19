@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   filters: any = {
     brand: '',
     body: '',
@@ -40,8 +40,17 @@ export class HomeComponent {
     { id: 6, title: 'Tesla Model S', price: 140000, year: 2023, mileage: 8000, fuel: 'Електрически', image: '/assets/cars/model-s.jpg' }
   ];
 
+  yearOptionsFrom: number[] = [];
+  yearOptionsTo: number[] = [];
+
   constructor() {
     this.showRandomAds();
+  }
+
+  ngOnInit() {
+    const currentYear = new Date().getFullYear();
+    this.yearOptionsFrom = Array.from({length: currentYear - 1969}, (_, i) => 1970 + i);
+    this.yearOptionsTo = Array.from({length: currentYear - 1969}, (_, i) => currentYear - i);
   }
 
   showRandomAds() {
@@ -62,5 +71,13 @@ export class HomeComponent {
                (!this.filters.year || ad.year >= parseInt(this.filters.year, 10));
       });
     }
+  }
+
+  onPriceFromChange(value: number) {
+    this.filters.priceFrom = Math.min(value, this.filters.priceTo || 300000);
+  }
+
+  onPriceToChange(value: number) {
+    this.filters.priceTo = Math.max(value, this.filters.priceFrom || 0);
   }
 }
