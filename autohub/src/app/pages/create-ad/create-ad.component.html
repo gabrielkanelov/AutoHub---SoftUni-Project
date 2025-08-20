@@ -1,1 +1,10 @@
-<p>create-ad works!</p>
+<section class="create-ad">
+    <h2>Създай нова обява</h2>
+    <form (ngSubmit)="onSubmit()" #postForm="ngForm">
+        <input name="title" [(ngModel)]="post.title" placeholder="Заглавие" required>
+        <input name="description" [(ngModel)]="post.description" placeholder="Описание" required>
+        <input name="imageUrl" [(ngModel)]="post.imageUrl" placeholder="URL на снимка" required>
+        <input name="price" type="number" [(ngModel)]="post.price" placeholder="Цена" required>
+        <button type="submit">Създай</button>
+    </form>
+</section>

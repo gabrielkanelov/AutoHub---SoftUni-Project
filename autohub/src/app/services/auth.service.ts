@@ -1,22 +1,48 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { User } from '../core/models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private _user$ = new BehaviorSubject<any>(null); // null = не е логнат
-  user$: Observable<any> = this._user$.asObservable();
-
-  login() {
-    this._user$.next({ name: 'Demo User' }); // примерно потребителско име
-  }
-
-  logout() {
-    this._user$.next(null);
-  }
+  private _user$ = new BehaviorSubject<User | null>(null);
+  public user$ = this._user$.asObservable();
 
   get isLoggedIn(): boolean {
-    // Примерна логика – ако имаш token в localStorage
-    return !!localStorage.getItem('token');
+    return !!this._user$.value;
+  }
+
+  private apiUrl = 'http://localhost:3000/api';
+
+  constructor(private http: HttpClient) {}
+
+  login(data: any): Observable<User> {
+    return this.http.post<User>('http://localhost:3000/api/login', data).pipe(
+      tap((user: User) => {
+        this._user$.next(user); 
+      })
+    );
+  }
+
+  register(data: any): Observable<any> {
+    return this.http.post('http://localhost:3000/api/register', data);
+  }
+
+  logout(): Observable<any> {
+    return this.http.post('http://localhost:3000/api/logout', {}, { withCredentials: true });
+  }
+
+  getProfile(): Observable<User> {
+    return this.http.get<User>(
+      `${this.apiUrl}/profile`,
+      { withCredentials: true }
+    );
+  }
+
+  clearUser() {
+    this._user$.next(null);
+  }
 }
-}
+
 

@@ -9,8 +9,8 @@ export interface Car {
   year: number;
   color: string;
   doors: 2 | 3 | 4 | 5;
-  power: number; // к.с.
-  mileage: number; // км
+  power: number;
+  mileage: number;
   extras?: string[];
   steering: 'Ляв' | 'Десен';
   imageUrl: string; 

@@ -1,1 +1,6 @@
-<p>details works!</p>
+<div *ngIf="theme">
+    <h2>{{ theme.themeName }}</h2>
+    <p>{{ theme.description }}</p>
+    <img [src]="theme.imageUrl" alt="{{theme.themeName}}" width="300">
+    <!-- Add more fields as needed -->
+</div>

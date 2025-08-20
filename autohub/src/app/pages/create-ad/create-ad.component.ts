@@ -1,11 +1,30 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { PostService, Post } from '../../core/services/post.service';
 
 @Component({
   selector: 'app-create-ad',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './create-ad.component.html',
-  styleUrl: './create-ad.component.scss'
+  styleUrls: ['./create-ad.component.scss']
 })
 export class CreateAdComponent {
+  post: Post = {
+    title: '',
+    description: '',
+    imageUrl: '',
+    price: 0
+  };
 
+  constructor(private postService: PostService, private router: Router) {}
+
+  onSubmit() {
+    this.postService.create(this.post).subscribe({
+      next: () => this.router.navigate(['/catalog']),
+      error: (err) => alert('Грешка при създаване!')
+    });
+  }
 }

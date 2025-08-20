@@ -1,12 +1,8 @@
-$royal-blue: #133a5e;
-$midnight-blue: #0a2239;
-$ice-white: #f8fbff;
-$onyx-black: #222831;
-$gold-accent: #f4d35e;
-$silver: #e5e9f2;
-$card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
-
 @use "sass:color";
+
+$accent-teal: #00a9a5;
+$dark-teal: #0b5351;
+$deep-bluegreen: #092327;
 
 @keyframes fadeInUp {
   from {
@@ -19,35 +15,25 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
   }
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(19, 58, 94, 0.15);
-  }
-  70% {
-    box-shadow: 0 0 0 12px rgba(19, 58, 94, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(19, 58, 94, 0);
-  }
-}
-
 .home {
   font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, $ice-white 70%, $silver 100%);
-  color: $onyx-black;
+  background: linear-gradient(135deg, #fff 70%, $dark-teal 100%);
+  color: $deep-bluegreen;
   min-height: 100vh;
+  padding-bottom: 2rem;
 
   .hero {
-    height: 60vh;
-    background: linear-gradient(120deg, $midnight-blue 60%, $royal-blue 100%);
+    height: 48vh;
+    background: linear-gradient(120deg, $dark-teal 60%, $deep-bluegreen 100%);
     position: relative;
     border-radius: 0 0 32px 32px;
-    box-shadow: $card-shadow;
+    box-shadow: 0 8px 32px rgba(9, 35, 39, 0.12);
     overflow: hidden;
     animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1);
 
     .overlay {
-      background: linear-gradient(120deg, rgba(19, 58, 94, 0.82) 60%, rgba(244, 211, 94, 0.08) 100%);
+      background: 
+        url('https://images.unsplash.com/photo-1653597235037-c00434b98121?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center/cover no-repeat;
       position: absolute;
       inset: 0;
       display: flex;
@@ -57,11 +43,11 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
       padding: 2rem;
 
       .content {
-        color: $ice-white;
-        text-shadow: 0 2px 16px rgba(19, 58, 94, 0.25);
+        color: #fff;
+        text-shadow: 0 2px 16px rgba(9, 35, 39, 0.25);
 
         h1 {
-          font-size: 3.2rem;
+          font-size: 3rem;
           margin-bottom: 0.5rem;
           font-weight: 700;
           letter-spacing: 1px;
@@ -69,7 +55,7 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
         }
 
         p {
-          font-size: 1.25rem;
+          font-size: 1.2rem;
           opacity: 0.92;
           font-weight: 400;
           animation: fadeInUp 1.2s 0.4s backwards;
@@ -79,10 +65,10 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
   }
 
   .filters {
-    background: $ice-white;
-    padding: 2.2rem 1.7rem 1.7rem 1.7rem;
+    background: #fff;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
     margin-top: -2rem;
-    box-shadow: $card-shadow;
+    box-shadow: 0 8px 32px rgba(9, 35, 39, 0.10);
     border-radius: 20px;
     max-width: 1100px;
     margin-left: auto;
@@ -99,135 +85,52 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
       select,
       input[type="number"] {
         padding: 0.8rem 1rem;
-        border: 1px solid $silver;
+        border: 1px solid $dark-teal;
         border-radius: 10px;
         font-size: 1.05rem;
         background: #f7fafd;
         transition: border-color 0.2s, box-shadow 0.2s;
-        color: $onyx-black;
-        box-shadow: 0 2px 8px rgba(19, 58, 94, 0.04);
+        color: $deep-bluegreen;
+        box-shadow: 0 2px 8px rgba(9, 35, 39, 0.04);
 
         &:focus {
-          border-color: $royal-blue;
-          box-shadow: 0 0 0 2px rgba(19, 58, 94, 0.15);
+          border-color: $accent-teal;
+          box-shadow: 0 0 0 2px rgba(0, 169, 165, 0.15);
           outline: none;
-          animation: pulse 1s;
         }
       }
 
       select {
         appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 8L0.803848 0.5L11.1962 0.5L6 8Z' fill='%23133a5e'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 8L0.803848 0.5L11.1962 0.5L6 8Z' fill='%2300a9a5'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
         background-position: right 0.7rem center;
         background-size: 12px 8px;
       }
 
       button {
-        background: linear-gradient(90deg, $royal-blue 60%, $midnight-blue 100%);
-        color: $ice-white;
+        background: linear-gradient(90deg, $accent-teal 60%, $dark-teal 100%);
+        color: #fff;
         border: none;
         border-radius: 10px;
         padding: 0.8rem;
         cursor: pointer;
         font-weight: 600;
         font-size: 1.08rem;
-        box-shadow: 0 2px 12px rgba(19, 58, 94, 0.10);
+        box-shadow: 0 2px 12px rgba(9, 35, 39, 0.10);
         transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-        animation: fadeInUp 1.2s 0.5s backwards;
 
         &:hover {
-          background: linear-gradient(90deg, color.adjust($royal-blue, $lightness: 8%), color.adjust($midnight-blue, $lightness: 8%));
-          box-shadow: 0 4px 24px rgba(19, 58, 94, 0.18);
+          background: linear-gradient(
+            90deg,
+            color.scale($accent-teal, $lightness: 8%),
+            color.scale($dark-teal, $lightness: 8%)
+          );
+          box-shadow: 0 4px 24px rgba(0, 169, 165, 0.18);
           transform: scale(1.04);
         }
       }
     }
-  }
-
-  .year-range {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 210px;
-    margin: 10px 0;
-
-    label {
-      font-size: 1rem;
-      color: $royal-blue;
-      margin-bottom: 2px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-
-    input[type="number"] {
-      padding: 0.7rem 0.9rem;
-      border: 1px solid $silver;
-      border-radius: 10px;
-      font-size: 1.05rem;
-      margin-bottom: 4px;
-      background: #f7fafd;
-      transition: border-color 0.2s, box-shadow 0.2s;
-
-      &:focus {
-        border-color: $royal-blue;
-        box-shadow: 0 0 0 2px rgba(19, 58, 94, 0.15);
-        outline: none;
-        animation: pulse 1s;
-      }
-    }
-  }
-
-  .container-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.1rem;
-    margin-bottom: 1.5rem;
-    align-items: center;
-    animation: fadeInUp 1.2s 0.6s backwards;
-  }
-
-  .color-item {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.3rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 8px;
-    transition: background 0.2s;
-    cursor: pointer;
-
-    &:hover {
-      background: rgba(19, 58, 94, 0.07);
-      .color-square {
-        transform: scale(1.15) rotate(-3deg);
-        box-shadow: 0 0 0 4px rgba(19, 58, 94, 0.09);
-      }
-      .color-label {
-        color: $royal-blue;
-        font-weight: 600;
-      }
-    }
-  }
-
-  .color-square {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    border: 2px solid $silver;
-    box-shadow: 0 2px 8px rgba(19, 58, 94, 0.10);
-    display: inline-block;
-    transition: transform 0.2s, box-shadow 0.2s;
-    background: linear-gradient(135deg, #fff 40%, var(--color, #e5e9f2) 100%);
-  }
-
-  .color-label {
-    font-size: 1rem;
-    color: $onyx-black;
-    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-    letter-spacing: 0.5px;
-    transition: color 0.2s, font-weight 0.2s;
-    user-select: all;
   }
 
   .results {
@@ -237,7 +140,7 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
     h2 {
       text-align: center;
       margin-bottom: 2.2rem;
-      color: $royal-blue;
+      color: $accent-teal;
       font-size: 2rem;
       font-weight: 600;
       letter-spacing: 1px;
@@ -250,10 +153,10 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
       gap: 2rem;
 
       .ad-card {
-        background: linear-gradient(120deg, $ice-white 80%, $silver 100%);
+        background: linear-gradient(120deg, #fff 80%, $dark-teal 100%);
         border-radius: 18px;
         overflow: hidden;
-        box-shadow: $card-shadow;
+        box-shadow: 0 8px 32px rgba(9, 35, 39, 0.10);
         transition: transform 0.3s, box-shadow 0.3s;
         display: flex;
         flex-direction: column;
@@ -262,14 +165,14 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
 
         &:hover {
           transform: translateY(-7px) scale(1.03);
-          box-shadow: 0 10px 32px rgba(19, 58, 94, 0.18);
+          box-shadow: 0 10px 32px $accent-teal;
         }
 
         img {
           width: 100%;
           height: 180px;
           object-fit: cover;
-          border-bottom: 1px solid $silver;
+          border-bottom: 1px solid $dark-teal;
           transition: filter 0.3s;
           filter: grayscale(10%) brightness(0.98);
         }
@@ -278,11 +181,11 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
           padding: 1rem 1.2rem 0 1.2rem;
           font-size: 1.18rem;
           font-weight: 600;
-          color: $royal-blue;
+          color: $accent-teal;
         }
 
         .price {
-          color: $gold-accent;
+          color: $accent-teal;
           font-weight: bold;
           padding: 0.2rem 1.2rem;
           font-size: 1.13rem;
@@ -290,15 +193,15 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
 
         .details {
           font-size: 0.95rem;
-          color: $onyx-black;
+          color: $deep-bluegreen;
           padding: 0 1.2rem 1rem 1.2rem;
           opacity: 0.85;
         }
 
         a {
           display: block;
-          background: linear-gradient(90deg, $royal-blue 60%, $midnight-blue 100%);
-          color: $ice-white;
+          background: linear-gradient(90deg, $accent-teal 60%, $dark-teal 100%);
+          color: #fff;
           text-align: center;
           padding: 0.7rem;
           text-decoration: none;
@@ -309,7 +212,11 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
           transition: background 0.2s, transform 0.2s;
 
           &:hover {
-            background: linear-gradient(90deg, color.adjust($royal-blue, $lightness: 8%), color.adjust($midnight-blue, $lightness: 8%));
+            background: linear-gradient(
+              90deg,
+              color.scale($accent-teal, $lightness: 8%),
+              color.scale($dark-teal, $lightness: 8%)
+            );
             transform: scale(1.04);
           }
         }
@@ -370,45 +277,6 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
       pointer-events: auto;
       transition: box-shadow 0.2s;
 
-      // Custom thumb for Chrome, Safari, Edge
-      &::-webkit-slider-thumb {
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #133a5e 60%, #f8fbff 100%);
-        border: 2px solid #f4d35e;
-        box-shadow: 0 2px 8px rgba(19, 58, 94, 0.13);
-        cursor: pointer;
-        transition: background 0.2s, border 0.2s;
-        animation: pulse 1.2s infinite;
-      }
-
-      // Custom thumb for Firefox
-      &::-moz-range-thumb {
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #133a5e 60%, #f8fbff 100%);
-        border: 2px solid #f4d35e;
-        box-shadow: 0 2px 8px rgba(19, 58, 94, 0.13);
-        cursor: pointer;
-        transition: background 0.2s, border 0.2s;
-        animation: pulse 1.2s infinite;
-      }
-
-      // Custom thumb for IE
-      &::-ms-thumb {
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #133a5e 60%, #f8fbff 100%);
-        border: 2px solid #f4d35e;
-        box-shadow: 0 2px 8px rgba(19, 58, 94, 0.13);
-        cursor: pointer;
-        transition: background 0.2s, border 0.2s;
-        animation: pulse 1.2s infinite;
-      }
-
       &:focus {
         box-shadow: 0 0 0 3px #f4d35e55;
       }
@@ -432,7 +300,7 @@ $card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
     }
   }
 
-  // Responsive improvements
+
   @media (max-width: 900px) {
     .filters {
       padding: 1.2rem 0.7rem;

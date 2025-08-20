@@ -1,6 +1,9 @@
 export interface User {
-  uid: string;
+  _id: string;
   email: string;
-  displayName?: string;
-  token?: string;
+  username: string;
+  tel?: string;
+  themes?: string[];
+  posts?: string[];
+  created_at?: string;
 }

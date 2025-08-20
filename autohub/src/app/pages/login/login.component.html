@@ -1,1 +1,8 @@
-<p>login works!</p>
+<div class="container">
+    <h2>Вход</h2>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <input [(ngModel)]="email" name="email" required placeholder="Имейл">
+        <input [(ngModel)]="password" name="password" type="password" required placeholder="Парола">
+        <button type="submit" [disabled]="loginForm.invalid">Вход</button>
+    </form>
+</div>

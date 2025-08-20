@@ -28,7 +28,7 @@ export class AuthService {
 
 @Injectable({ providedIn: 'root' })
 export class AdsService {
-  private apiUrl = 'http://localhost:3000/cars'; // Adjust to your REST API
+  private apiUrl = 'http://localhost:3000/cars'; // Adjust the API
 
   constructor(private http: HttpClient) {}
 
@@ -51,4 +51,18 @@ export class AdsService {
   deleteAd(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  getThemes(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:3000/api/themes');
+  }
+
+  getThemeById(id: string): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/themes/${id}`);
+  }
+
+  createTheme(data: { themeName: string; postText: string; imageUrl: string }) {
+    return this.http.post('http://localhost:3000/api/themes', data);
+  }
 }
+
+

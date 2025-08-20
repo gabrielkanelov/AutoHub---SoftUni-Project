@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 import { AppComponent } from './app.component';
 
@@ -21,8 +23,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { authGuard } from './guards/auth.guard';
 import { guestGuard } from './guards/guest.guard';
 
-import { routes } from './app.routes'; // Импортиране на маршрути
-import { CommonModule } from '@angular/common';
+import { routes } from './app.routes'; 
 
 @NgModule({
   declarations: [
@@ -39,11 +40,13 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     BrowserModule,
-    CommonModule,
     FormsModule,
-    HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)  // Регистриране на маршрути
+    RouterModule.forRoot(routes),
+    CommonModule
+  ],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [AppComponent]
 })
