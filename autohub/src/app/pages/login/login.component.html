@@ -1,8 +1,32 @@
-<div class="container">
-    <h2>Вход</h2>
-    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-        <input [(ngModel)]="email" name="email" required placeholder="Имейл">
-        <input [(ngModel)]="password" name="password" type="password" required placeholder="Парола">
-        <button type="submit" [disabled]="loginForm.invalid">Вход</button>
-    </form>
+<div class="login-wrapper">
+    <div class="login-card">
+        <h2>Вход</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <label>
+                Email:
+                <input formControlName="email" type="email" placeholder="Email" autocomplete="email" />
+            </label>
+            <div *ngIf="submitted && form.get('email')?.errors?.['required']" class="error">
+                Моля, въведете email!
+            </div>
+            <div *ngIf="submitted && !form.get('email')?.errors?.['required'] && form.get('email')?.errors?.['email']"
+                class="error">
+                Въведете валиден email адрес!
+            </div>
+            <label>
+                Парола:
+                <input formControlName="password" type="password" placeholder="Парола"
+                    autocomplete="current-password" />
+            </label>
+            <div *ngIf="submitted && form.get('password')?.errors?.['required']" class="error">
+                Моля, въведете парола!
+            </div>
+            <button type="submit">Вход</button>
+            <div *ngIf="success" class="success">{{ success }}</div>
+        </form>
+        <div class="register-link">
+            Нямаш профил?
+            <a routerLink="/register">Регистрирай се</a>
+        </div>
+    </div>
 </div>
