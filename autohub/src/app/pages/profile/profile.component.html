@@ -1,1 +1,53 @@
-<p>profile works!</p>
+<div class="profile-wrapper" *ngIf="user; else notLoggedIn">
+    <div class="profile-header">
+        <div class="avatar-circle">
+            <span>{{ user.username ? (user.username.charAt(0) | uppercase) : '?' }}</span>
+        </div>
+        <div class="header-info">
+            <h2>{{ user.username }}</h2>
+            <div class="info-row">
+                <i class="fa fa-envelope"></i>
+                <span>{{ user.email }}</span>
+            </div>
+            <div class="info-row">
+                <i class="fa fa-calendar"></i>
+                <span>Member since: {{ user.created_at | date:'dd MMM yyyy' }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="profile-stats">
+        <div class="stat-card">
+            <i class="fa fa-folder"></i>
+            <span>Themes</span>
+            <span class="stat-value">{{ user.themes?.length || 0 }}</span>
+        </div>
+        <div class="stat-card">
+            <i class="fa fa-file-text"></i>
+            <span>Posts</span>
+            <span class="stat-value">{{ user.posts?.length || 0 }}</span>
+        </div>
+    </div>
+    <div class="profile-lists">
+        <div class="list-section">
+            <h3>My Themes</h3>
+            <div *ngIf="!user.themes?.length" class="empty-list">No published themes.</div>
+            <ul *ngIf="user.themes?.length">
+                <li *ngFor="let theme of user.themes">
+                    <i class="fa fa-folder"></i> {{ theme }}
+                </li>
+            </ul>
+        </div>
+        <div class="list-section">
+            <h3>My Posts</h3>
+            <div *ngIf="!user.posts?.length" class="empty-list">No posts yet.</div>
+            <ul *ngIf="user.posts?.length">
+                <li *ngFor="let post of user.posts">
+                    <i class="fa fa-file-text"></i> {{ post }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<ng-template #notLoggedIn>
+    <div class="not-logged">Моля, влезте в профила си.</div>
+</ng-template>

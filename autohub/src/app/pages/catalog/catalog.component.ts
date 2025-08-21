@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { PostService, Post } from '../../core/services/post.service';
-import { Observable } from 'rxjs';
 import { ThemeService } from '../../core/services/theme.service';
+import { Theme } from '../../core/models/theme.model'; // <-- правилен импорт
 
 @Component({
   selector: 'app-catalog',
@@ -13,18 +12,12 @@ import { ThemeService } from '../../core/services/theme.service';
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
-  posts: Post[] = [];
-  themes: any[] = [];
+  themes: Theme[] = [];
   error: any;
 
-  constructor(private postService: PostService, private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService) {}
 
   ngOnInit() {
-    this.postService.getAll().subscribe({
-      next: (posts) => this.posts = posts,
-      error: (err) => console.error(err)
-    });
-
     this.themeService.getThemes().subscribe({
       next: (themes) => this.themes = themes,
       error: (err) => this.error = err

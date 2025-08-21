@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { ThemeService, Theme, Post } from '../../core/services/theme.service';
+import { ThemeService } from '../../core/services/theme.service';
+import { Theme } from '../../core/models/theme.model';
+import { Post } from '../../core/models/comment.model';
 
 @Component({
   selector: 'app-details',
@@ -19,7 +21,6 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    // Check if id is valid
     if (!id || !/^[a-f\d]{24}$/i.test(id)) {
       this.error = 'Invalid theme id!';
       return;

@@ -11,6 +11,7 @@ import { AuthService } from '../../core/services/auth.service';
   imports: [CommonModule, RouterModule]
 })
 export class NavbarComponent {
+  menuOpen = false;
 
   get isLoggedIn() {
     return this.authService.isLoggedIn;
@@ -22,5 +23,9 @@ export class NavbarComponent {
     this.authService.logout().subscribe(() => {
       this.router.navigate(['/login']);
     });
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 }

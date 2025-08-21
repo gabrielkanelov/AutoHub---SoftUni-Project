@@ -28,12 +28,13 @@ export class AuthService {
 
 @Injectable({ providedIn: 'root' })
 export class AdsService {
-  private apiUrl = 'http://localhost:3000/cars'; // Adjust the API
+  private apiUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
 
-  getAds(): Observable<Car[]> {
-    return this.http.get<Car[]>(this.apiUrl);
+  // Използвай endpoint от readme.md, например /themes
+  getAds(): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:3000/api/themes`);
   }
 
   getAd(id: string): Observable<Car> {

@@ -1,8 +1,9 @@
-export interface Comment {
-  id: string;
-  carId: string;
-  authorId: string;
-  authorName: string;
+export interface Post {
+  _id: string;
   text: string;
-  createdAt: number;
+  userId: string;
+  themeId: string;
+  created_at: string;
+  updatedAt: string;
+  likes: string[];
 }

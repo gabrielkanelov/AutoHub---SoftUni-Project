@@ -1,24 +1,22 @@
 <nav class="navbar">
     <div class="navbar-left">
-        <button class="hamburger">
+        <button class="hamburger" aria-label="Меню" (click)="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" [class.open]="menuOpen">
             <ul class="dropdown-list">
-                <li><a routerLink="/">Home</a></li>
-                <li><a routerLink="/about">About</a></li>
-                <li><a routerLink="/contact">Contact</a></li>
-                <li><a routerLink="/">Начало / Търсене</a></li>
+                <li><a routerLink="/">Начало</a></li>
                 <li><a routerLink="/catalog">Каталог</a></li>
+                <li><a routerLink="/about">За нас</a></li>
+                <li><a routerLink="/contact">Контакт</a></li>
+                <li><a routerLink="/questions">Въпроси и предложения</a></li>
+                <li><a routerLink="/settings">Настройки</a></li>
                 <li *ngIf="!isLoggedIn"><a routerLink="/login">Вход</a></li>
                 <li *ngIf="!isLoggedIn"><a routerLink="/register">Регистрация</a></li>
                 <li *ngIf="isLoggedIn"><a routerLink="/create-ad">Публикувай обява</a></li>
                 <li *ngIf="isLoggedIn"><a routerLink="/profile">Профил</a></li>
-                <li><a routerLink="/settings">Настройки</a></li>
-                <li><a routerLink="/questions">Въпроси и предложения</a></li>
-                <li><a routerLink="/contact">Контакт AutoHub</a></li>
                 <li *ngIf="isLoggedIn" class="logout-link">
                     <a (click)="logout()">Изход</a>
                 </li>

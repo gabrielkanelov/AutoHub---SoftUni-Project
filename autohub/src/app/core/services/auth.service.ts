@@ -44,6 +44,18 @@ export class AuthService {
     );
   }
 
+  updateProfile(data: Partial<User>): Observable<User> {
+    return this.http.put<User>(
+      `${this.apiUrl}/profile`,
+      data,
+      { withCredentials: true }
+    ).pipe(
+      tap((user: User) => {
+        this._user$.next(user);
+      })
+    );
+  }
+
   clearUser() {
     this._user$.next(null);
   }

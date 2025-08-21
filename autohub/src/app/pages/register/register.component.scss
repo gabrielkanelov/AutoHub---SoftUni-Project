@@ -1,17 +1,174 @@
 @use "sass:color";
 
-$royal-blue: #133a5e;
-$midnight-blue: #0a2239;
-$ice-white: #f8fbff;
-$onyx-black: #222831;
-$gold-accent: #f4d35e;
-$silver: #e5e9f2;
-$card-shadow: 0 8px 32px rgba(19, 58, 94, 0.12);
 $accent-teal: #00a9a5;
 $dark-teal: #0b5351;
 $deep-bluegreen: #092327;
 
+$bg-image: url('https://images.unsplash.com/photo-1679858593611-bb03d54be8ba?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 
+
+.login-wrapper {
+  min-height: 100vh;
+  background: $bg-image center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.22); 
+    z-index: 0;
+  }
+}
+
+.login-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(9, 35, 39, 0.10);
+  padding: 1.6rem 1rem;
+  width: 100%;
+  max-width: 450px;
+  max-height: none;
+  min-height: 0;
+  overflow-y: visible;
+  color: $deep-bluegreen;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  animation: fadeInUp 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+
+  h2 {
+    text-align: center;
+    color: $accent-teal;
+    font-size: 2.1rem;
+    font-weight: 700;
+    margin-bottom: 1.3rem;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 16px rgba(9, 35, 39, 0.10);
+    transition: text-shadow 0.3s;
+
+    &:hover {
+      text-shadow:
+        0 0 12px #00a9a5,
+        0 0 24px #00a9a5,
+        0 0 36px #0b5351;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+
+    label {
+      font-weight: 600;
+      color: $dark-teal;
+      margin-bottom: 0.3rem;
+      font-size: 1.08rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    input {
+      padding: 0.85rem 1rem;
+      border: 1.5px solid $accent-teal;
+      border-radius: 10px;
+      font-size: 1.08rem;
+      background: rgba(247, 250, 253, 0.85);
+      color: $deep-bluegreen;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(9, 35, 39, 0.04);
+
+      &:focus {
+        border-color: $dark-teal;
+        box-shadow: 0 0 0 2px rgba(0, 169, 165, 0.15);
+        outline: none;
+      }
+    }
+
+    button {
+      background: linear-gradient(90deg, $accent-teal 60%, $dark-teal 100%);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.9rem;
+      font-weight: 600;
+      font-size: 1.13rem;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(9, 35, 39, 0.10);
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+
+      &:hover:not(:disabled) {
+        background: linear-gradient(
+          90deg,
+          color.scale($accent-teal, $lightness: 8%),
+          color.scale($dark-teal, $lightness: 8%)
+        );
+        box-shadow: 0 4px 24px rgba(0, 169, 165, 0.18);
+        transform: scale(1.04);
+      }
+      &:disabled {
+        background: #b2dfdb;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .error {
+    color: #d32f2f;
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+    margin-top: -0.3rem;
+    text-align: left;
+    font-weight: 500;
+    padding-left: 2px;
+    letter-spacing: 0.2px;
+  }
+
+  .success {
+    color: #00a908;
+    background: #e6fbe6;
+    border: 1.5px solid #00a908;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+    margin-top: 0.7rem;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 2px 12px rgba(0, 169, 8, 0.10);
+    animation: fadeInUp 0.5s;
+  }
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 1.2rem;
+  font-size: 1.05rem;
+  color: $deep-bluegreen;
+
+  a {
+    color: $accent-teal;
+    text-decoration: underline;
+    font-weight: 600;
+    margin-left: 0.3rem;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $dark-teal;
+      text-decoration: none;
+    }
+  }
+}
 
 @keyframes fadeInUp {
   from {
@@ -24,176 +181,25 @@ $deep-bluegreen: #092327;
   }
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(19, 58, 94, 0.15);
-  }
-  70% {
-    box-shadow: 0 0 0 12px rgba(19, 58, 94, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(19, 58, 94, 0);
-  }
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
 }
 
-.container {
-  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, $ice-white 80%, $silver 100%);
-  color: $onyx-black;
-  min-height: 60vh;
-  max-width: 420px;
-  margin: 4rem auto;
-  box-shadow: $card-shadow;
-  border-radius: 18px;
-  padding: 2.5rem 2rem;
-  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1);
-
-  h2 {
-    color: $royal-blue;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-
-    input {
-      padding: 0.9rem 1.1rem;
-      border: 1px solid $silver;
-      border-radius: 10px;
-      font-size: 1.08rem;
-      background: #f7fafd;
-      color: $onyx-black;
-      box-shadow: 0 2px 8px rgba(19, 58, 94, 0.04);
-      transition: border-color 0.2s, box-shadow 0.2s;
-
-      &:focus {
-        border-color: $royal-blue;
-        box-shadow: 0 0 0 2px rgba(19, 58, 94, 0.15);
-        outline: none;
-        animation: pulse 1s;
-      }
-    }
-
-    button {
-      background: linear-gradient(90deg, $royal-blue 60%, $midnight-blue 100%);
-      color: $ice-white;
-      border: none;
-      border-radius: 10px;
-      padding: 0.9rem;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1.08rem;
-      box-shadow: 0 2px 12px rgba(19, 58, 94, 0.10);
-      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-      animation: fadeInUp 1.2s 0.5s backwards;
-
-      &:hover {
-        background: linear-gradient(90deg, color.adjust($royal-blue, $lightness: 8%), color.adjust($midnight-blue, $lightness: 8%));
-        box-shadow: 0 4px 24px rgba(19, 58, 94, 0.18);
-        transform: scale(1.04);
-      }
-    }
-  }
+.error.shake {
+  animation: shake 0.45s cubic-bezier(.36,.07,.19,.97) both;
 }
 
-.register-wrapper {
-  min-height: 100vh;
-  background: linear-gradient(135deg, $deep-bluegreen 60%, $dark-teal 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-
-  .register-card {
-    background: linear-gradient(120deg, $dark-teal 70%, $accent-teal 100%);
-    border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(0, 169, 165, 0.10);
-    padding: 2.5rem 2rem;
-    width: 100%;
-    max-width: 420px;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1);
+@media (max-width: 600px) {
+  .login-card {
+    padding: 1.2rem 0.5rem;
 
     h2 {
-      text-align: center;
-      color: $accent-teal;
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-      letter-spacing: 1px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-
-      label {
-        font-weight: 600;
-        color: $accent-teal;
-        margin-bottom: 0.3rem;
-      }
-
-      input {
-        padding: 0.8rem 1rem;
-        border: 1px solid $accent-teal;
-        border-radius: 10px;
-        font-size: 1.05rem;
-        background: $deep-bluegreen;
-        color: #fff;
-        transition: border-color 0.2s, box-shadow 0.2s;
-
-        &:focus {
-          border-color: $accent-teal;
-          box-shadow: 0 0 0 2px rgba(0, 169, 165, 0.15);
-          outline: none;
-        }
-      }
-
-      button {
-        background: linear-gradient(90deg, $accent-teal 60%, $dark-teal 100%);
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        padding: 0.8rem;
-        font-weight: 600;
-        font-size: 1.08rem;
-        cursor: pointer;
-        box-shadow: 0 2px 12px rgba(0, 169, 165, 0.10);
-        transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-
-        &:hover {
-          background: linear-gradient(
-            90deg,
-            color.scale($accent-teal, $lightness: 8%),
-            color.scale($dark-teal, $lightness: 8%)
-          );
-          box-shadow: 0 4px 24px rgba(0, 169, 165, 0.18);
-          transform: scale(1.04);
-        }
-      }
-    }
-
-    .link {
-      text-align: center;
-      color: $accent-teal;
-      text-decoration: underline;
-      font-size: 1rem;
-      margin-top: 0.7rem;
-      transition: color 0.2s;
-
-      &:hover {
-        color: #fff;
-        text-decoration: none;
-      }
+      font-size: 1.3rem;
     }
   }
 }

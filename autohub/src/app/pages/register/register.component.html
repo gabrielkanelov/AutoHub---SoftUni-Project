@@ -1,11 +1,66 @@
-<div class="container">
-    <h2>Регистрация</h2>
-    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
-        <input [(ngModel)]="name" name="name" required placeholder="Име">
-        <input [(ngModel)]="email" name="email" type="email" required placeholder="Имейл">
-        <input [(ngModel)]="username" name="username" required placeholder="Потребителско име">
-        <input [(ngModel)]="password" name="password" type="password" required placeholder="Парола">
-        <input [(ngModel)]="rePassword" name="rePassword" type="password" required placeholder="Повтори паролата">
-        <button type="submit" [disabled]="registerForm.invalid">Регистрация</button>
-    </form>
+<div class="login-wrapper">
+    <div class="login-card">
+        <h2>Регистрация</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+            <label>
+                Email:
+                <input formControlName="email" type="email" placeholder="Email (задължителен)" autocomplete="email" />
+            </label>
+            <div *ngIf="submitted && form.get('email')?.errors?.['required']" class="error">
+                Моля, въведете email!
+            </div>
+            <div *ngIf="submitted && !form.get('email')?.errors?.['required'] && form.get('email')?.errors?.['email']"
+                class="error">
+                Въведете валиден email адрес!
+            </div>
+            <label>
+                Потребителско име:
+                <input formControlName="username" type="text" placeholder="Потребителско име (задължително)" autocomplete="username" />
+            </label>
+            <div *ngIf="submitted && form.get('username')?.errors?.['required']" class="error">
+                Моля, въведете потребителско име!
+            </div>
+            <div *ngIf="submitted && form.get('username')?.errors?.['minlength']" class="error">
+                Потребителското име трябва да е поне 5 символа!
+            </div>
+            <div *ngIf="submitted && form.get('username')?.errors?.['pattern']" class="error">
+                Позволени са само латински букви и цифри!
+            </div>
+            <label>
+                Парола:
+                <input formControlName="password" type="password" placeholder="Парола (задължителна)" autocomplete="new-password" />
+            </label>
+            <div *ngIf="submitted && form.get('password')?.errors?.['required']" class="error">
+                Моля, въведете парола!
+            </div>
+            <div *ngIf="submitted && form.get('password')?.errors?.['minlength']" class="error">
+                Паролата трябва да е поне 5 символа!
+            </div>
+            <div *ngIf="submitted && form.get('password')?.errors?.['pattern']" class="error">
+                Позволени са само латински букви и цифри!
+            </div>
+            <label>
+                Повтори паролата:
+                <input formControlName="rePassword" type="password" placeholder="Повтори паролата (задължителна)"
+                    autocomplete="new-password" />
+            </label>
+            <div *ngIf="submitted && form.get('rePassword')?.errors?.['required']" class="error">
+                Моля, повторете паролата!
+            </div>
+            <div *ngIf="submitted && form.errors?.['mismatch']" class="error">
+                Паролите не съвпадат!
+            </div>
+            <label>
+                Телефон:
+                <input formControlName="tel" type="tel" placeholder="Телефон (по желание)" autocomplete="tel" />
+            </label>
+            <button type="submit">Регистрирай се</button>
+            <div *ngIf="error" class="error" [class.shake]="shakeError">{{ error }}</div>
+            <div *ngIf="success" class="success">{{ success }}</div>
+        </form>
+        <div class="register-link">
+            Вече имаш профил?
+            <a routerLink="/login">Вход</a>
+        </div>
+    </div>
 </div>

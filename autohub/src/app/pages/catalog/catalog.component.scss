@@ -15,6 +15,59 @@ $deep-bluegreen: #092327;
   }
 }
 
+.catalog-wrapper {
+  padding: 2rem;
+  h2 {
+    text-align: center;
+    color: #0b5351;
+    margin-bottom: 2rem;
+  }
+  .error {
+    color: #d32f2f;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .empty {
+    color: #888;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  .ads-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    .ad-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(9, 35, 39, 0.08);
+      padding: 1rem;
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .ad-info {
+        h3 {
+          color: #0b5351;
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+        }
+        p {
+          color: #092327;
+          margin: 0.2rem 0;
+        }
+        .details-link {
+          margin-top: 0.7rem;
+          color: #00a9a5;
+          text-decoration: underline;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
 .ads-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
