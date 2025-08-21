@@ -1,18 +1,4 @@
-<div class="topbar">
-    <a routerLink="/" class="logo-link">
-        <img src="assets/logo.png" alt="AutoHub Logo" class="logo" />
-    </a>
-    <!-- Покажи бутоните само ако потребителят НЕ е логнат -->
-    <nav>
-        <!-- Покажи Login/Register само ако потребителят НЕ е логнат -->
-        <a *ngIf="!authService.isLoggedIn" routerLink="/login">Login</a>
-        <a *ngIf="!authService.isLoggedIn" routerLink="/register">Register</a>
-
-        <!-- Покажи Profile/Logout само ако потребителят Е логнат -->
-        <a *ngIf="authService.isLoggedIn" routerLink="/profile">Profile</a>
-        <a *ngIf="authService.isLoggedIn" (click)="logout()">Logout</a>
-    </nav>
-</div>
+<app-navbar></app-navbar>
 <div class="container">
     <router-outlet></router-outlet>
 </div>

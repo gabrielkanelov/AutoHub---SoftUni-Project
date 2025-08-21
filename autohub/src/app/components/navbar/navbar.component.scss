@@ -1,0 +1,410 @@
+@use "sass:color";
+
+$accent-teal: #00a9a5;
+$dark-teal: #0b5351;
+$deep-bluegreen: #092327;
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, $dark-teal 60%, $deep-bluegreen 100%);
+  padding: 0.4rem 1.2rem;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(9, 35, 39, 0.12);
+  border-radius: 0 0 16px 16px;
+  font-family: "Oswald", "Montserrat", "Poppins", "Segoe UI", Arial, sans-serif;
+  font-weight: 400;
+  min-height: 48px;
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 40px;
+      height: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-right: 0.7rem;
+      span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background: $accent-teal;
+        margin: 3px 0;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      &:hover span {
+        background: color.scale($accent-teal, $lightness: 8%);
+      }
+    }
+
+    .dropdown-menu {
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-16px);
+      transition: opacity 0.5s, transform 0.5s;
+      ul li {
+        opacity: 0;
+        transform: translateY(-12px);
+        transition: opacity 0.5s, transform 0.5s;
+        animation: none;
+      }
+    }
+    &:hover .dropdown-menu,
+    .navbar-left:focus-within .dropdown-menu,
+    .dropdown-menu:hover {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+
+      ul li {
+        animation: fadeInDownLink 0.7s forwards;
+      }
+      ul li:nth-child(1) { animation-delay: 0.10s; }
+      ul li:nth-child(2) { animation-delay: 0.20s; }
+      ul li:nth-child(3) { animation-delay: 0.30s; }
+      ul li:nth-child(4) { animation-delay: 0.40s; }
+      ul li:nth-child(5) { animation-delay: 0.50s; }
+      ul li:nth-child(6) { animation-delay: 0.60s; }
+      ul li:nth-child(7) { animation-delay: 0.70s; }
+      ul li:nth-child(8) { animation-delay: 0.80s; }
+      ul li:nth-child(9) { animation-delay: 0.90s; }
+      ul li:nth-child(10) { animation-delay: 1.00s; }
+      ul li:nth-child(11) { animation-delay: 1.10s; }
+      ul li:nth-child(12) { animation-delay: 1.20s; }
+      ul li:nth-child(13) { animation-delay: 1.30s; }
+    }
+
+    // Bridge between navbar and dropdown
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 216px;
+      height: 40px;
+      background: transparent;
+      pointer-events: auto;
+    }
+  }
+
+  .navbar-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: $accent-teal;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 4px rgba(9, 35, 39, 0.10);
+      transition: color 0.2s;
+      &:hover {
+        color: color.scale($accent-teal, $lightness: 8%);
+      }
+    }
+  }
+
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1.2rem;
+    list-style: none;
+    li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.3em 0.8em;
+      border-radius: 8px;
+      background: transparent;
+      transition: background 0.2s, color 0.2s;
+      &:hover {
+        background: $accent-teal;
+        color: #fff;
+      }
+    }
+  }
+
+  .navbar-right {
+    margin-left: 1.2rem;
+    .favorites {
+      color: $accent-teal;
+      font-size: 1.3rem;
+      text-decoration: none;
+      transition: color 0.2s, transform 0.2s;
+      position: relative;
+      &:hover {
+        color: #fff;
+        background: $accent-teal;
+        border-radius: 50%;
+      }
+      i {
+        font-size: 1.3rem;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.4rem 1.2rem;
+    min-height: 48px;
+    background: linear-gradient(90deg, $dark-teal 60%, $deep-bluegreen 100%);
+
+    .navbar-left {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    .hamburger {
+      margin-right: 0.7rem;
+      align-self: flex-start;
+      position: absolute;
+      left: 1.2rem;
+      top: 0.6rem;
+      z-index: 101;
+    }
+
+    .navbar-center {
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 0;
+      position: relative;
+      left: 0;
+      top: 0;
+    }
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: $accent-teal;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 4px rgba(9, 35, 39, 0.10);
+      transition: color 0.2s;
+    }
+    .navbar-right {
+      margin-top: 0.5rem;
+    }
+    .navbar-links {
+      margin-left: 0;
+      gap: 0.7rem;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+  }
+
+  .dropdown-menu {
+    min-width: 180px;
+    left: 0;
+    top: 54px;
+    padding: 1rem 1.1rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    position: absolute;
+    background: #fff;
+    color: $deep-bluegreen;
+    box-shadow: 0 4px 24px rgba(9, 35, 39, 0.18);
+    z-index: 100;
+  }
+
+  .dropdown-menu ul {
+    padding: 0;
+  }
+
+  .dropdown-menu ul li a {
+    padding: 0.4em 0.7em;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0.2rem 0.2rem;
+    min-height: 32px;
+    .navbar-center {
+      margin: 0.2rem 0;
+    }
+    .navbar-links {
+      gap: 0.4rem;
+    }
+  }
+
+  .dropdown-menu {
+    min-width: 100vw;
+    left: 0;
+    right: 0;
+    top: 40px;
+    padding: 0.4rem 0.2rem;
+    font-size: 0.95rem;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .dropdown-menu ul {
+    padding: 0.08rem 0.1rem;
+  }
+
+  .dropdown-menu ul li a {
+    font-size: 0.95rem;
+    padding: 0.3em 0.5em;
+  }
+}
+
+// Dropdown menu styles
+.dropdown-menu {
+  font-family: "Oswald", "Montserrat", "Poppins", "Segoe UI", Arial, sans-serif;
+  position: absolute;
+  top: 54px;
+  left: 0;
+  background: #fff;
+  border: 1.5px solid transparent;
+  box-shadow: 0 4px 24px rgba(9, 35, 39, 0.18);
+  min-width: 180px;
+  padding: 1rem 1.1rem;
+  z-index: 100;
+  font-size: 1rem;
+  background-clip: padding-box;
+  border-image: linear-gradient(90deg, $accent-teal, color.scale($accent-teal, $lightness: 30%), $dark-teal) 1;
+
+  ul {
+    padding: 0.15rem 0.2rem;
+    margin: 0;
+    list-style: none;
+    text-align: left;
+  }
+
+  li {
+    margin-bottom: 0.18rem;
+    text-align: left;
+  }
+
+  li:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    display: block;
+    text-align: left;
+    padding-left: 0.3em;
+    color: $deep-bluegreen;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.4em 0.7em;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+    &:hover {
+      background: color.scale($accent-teal, $lightness: 85%);
+      color: $accent-teal;
+    }
+  }
+
+  ul li.logout-link a {
+    background: #ffeded;
+    color: #d32f2f;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+  }
+  ul li.logout-link a:hover {
+    background: #d32f2f;
+    color: #fff;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDownLink {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-left {
+  position: relative;
+
+  .dropdown-menu {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-16px);
+    transition: opacity 0.5s, transform 0.5s;
+    ul li {
+      opacity: 0;
+      transform: translateY(-12px);
+      transition: opacity 0.5s, transform 0.5s;
+      animation: none;
+    }
+  }
+
+  &:hover .dropdown-menu,
+  .dropdown-menu:hover {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+
+    ul li {
+      animation: fadeInDownLink 0.7s forwards; 
+    }
+    ul li:nth-child(1) { animation-delay: 0.10s; }
+    ul li:nth-child(2) { animation-delay: 0.20s; }
+    ul li:nth-child(3) { animation-delay: 0.30s; }
+    ul li:nth-child(4) { animation-delay: 0.40s; }
+    ul li:nth-child(5) { animation-delay: 0.50s; }
+    ul li:nth-child(6) { animation-delay: 0.60s; }
+    ul li:nth-child(7) { animation-delay: 0.70s; }
+    ul li:nth-child(8) { animation-delay: 0.80s; }
+    ul li:nth-child(9) { animation-delay: 0.90s; }
+    ul li:nth-child(10) { animation-delay: 1.00s; }
+    ul li:nth-child(11) { animation-delay: 1.10s; }
+    ul li:nth-child(12) { animation-delay: 1.20s; }
+    ul li:nth-child(13) { animation-delay: 1.30s; }
+  }
+
+  // мост между navbar и dropdown, за да не се затваря при преминаване с мишката
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 216px;
+    height: 40px;
+    background: transparent;
+    pointer-events: auto;
+  }
+}
+
+//TODO: FIX THE GOD DAMN DROP MENU

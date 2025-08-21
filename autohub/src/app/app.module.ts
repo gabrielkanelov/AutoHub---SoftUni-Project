@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 
 import { HomeComponent } from './pages/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -36,7 +37,8 @@ import { routes } from './app.routes';
     CreateAdComponent,
     EditAdComponent,
     ProfileComponent,
-    TruncatePipe
+    TruncatePipe,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

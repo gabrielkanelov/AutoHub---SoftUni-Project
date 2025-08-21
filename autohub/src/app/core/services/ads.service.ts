@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../core/models/user.model';
+import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
-import { Car } from '../core/models/car.model';
+import { Car } from '../models/car.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

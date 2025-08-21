@@ -11,5 +11,10 @@ export const routes: Routes = [
   { path: 'profile', canActivate: [authGuard], loadComponent: () => import('./pages/profile/profile.component').then(m => m.ProfileComponent) },
   { path: 'login', canActivate: [guestGuard], loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent) },
   { path: 'register', canActivate: [guestGuard], loadComponent: () => import('./pages/register/register.component').then(m => m.RegisterComponent) },
+  { path: 'my-ads', canActivate: [authGuard], loadComponent: () => import('./pages/my-ads/my-ads.component').then(m => m.MyAdsComponent) },
+  { path: 'liked-ads', canActivate: [authGuard], loadComponent: () => import('./pages/liked-ads/liked-ads.component').then(m => m.LikedAdsComponent) },
+  { path: 'settings', canActivate: [authGuard], loadComponent: () => import('./pages/settings/settings.component').then(m => m.SettingsComponent) },
+  { path: 'questions', loadComponent: () => import('./pages/questions/questions.component').then(m => m.QuestionsComponent) },
+  { path: 'contact', loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent) },
   { path: '**', redirectTo: '' }
 ];
