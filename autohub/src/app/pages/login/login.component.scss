@@ -169,6 +169,19 @@ $bg-image: url('https://images.unsplash.com/photo-1679858593611-bb03d54be8ba?q=8
   }
 }
 
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+
+.error.shake {
+  animation: shake 0.45s cubic-bezier(.36,.07,.19,.97) both;
+}
+
 @media (max-width: 600px) {
   .login-card {
     padding: 1.2rem 0.5rem;

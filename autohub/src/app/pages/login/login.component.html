@@ -1,7 +1,7 @@
 <div class="login-wrapper">
     <div class="login-card">
         <h2>Вход</h2>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
             <label>
                 Email:
                 <input formControlName="email" type="email" placeholder="Email" autocomplete="email" />
@@ -22,6 +22,7 @@
                 Моля, въведете парола!
             </div>
             <button type="submit">Вход</button>
+            <div *ngIf="error" class="error" [class.shake]="shakeError">{{ error }}</div>
             <div *ngIf="success" class="success">{{ success }}</div>
         </form>
         <div class="register-link">

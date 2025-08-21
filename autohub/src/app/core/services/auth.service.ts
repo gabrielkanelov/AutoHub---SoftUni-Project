@@ -32,7 +32,7 @@ export class AuthService {
   logout(): Observable<any> {
     return this.http.post('http://localhost:3000/api/logout', {}, { withCredentials: true }).pipe(
       tap(() => {
-        this.clearUser(); // изчиства потребителя след logout
+        this.clearUser(); // Clear user data after logout
       })
     );
   }

@@ -16,7 +16,9 @@ import { ErrorService } from '../../core/services/error.service';
 export class LoginComponent implements OnInit {
   form;
   success: string | undefined;
+  error: string | undefined;
   submitted = false;
+  shakeError = false;
 
   constructor(
     private fb: FormBuilder,
@@ -46,6 +48,8 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.success = undefined;
+    this.error = undefined;
+    this.shakeError = false;
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
@@ -55,12 +59,12 @@ export class LoginComponent implements OnInit {
         this.success = 'Успешно влязохте!';
         setTimeout(() => {
           this.router.navigate(['/']);
-          setTimeout(() => {
-            this.errorService.addError({ message: 'Успешно влязохте!', timestamp: new Date() });
-          }, 400);
         }, 1200);
       },
       error: err => {
+        this.error = err.error?.message || 'Грешен email или парола!';
+        this.shakeError = true;
+        setTimeout(() => this.shakeError = false, 500); // премахва shake след анимацията
       }
     });
   }
